@@ -614,3 +614,9 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.o.relativenumber = true
+
+-- https://www.reddit.com/r/neovim/comments/10tshmx/comment/j78kvj6/?utm_source=share&utm_medium=web2x&context=3
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
