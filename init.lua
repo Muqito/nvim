@@ -98,6 +98,7 @@ vim.opt.relativenumber = true
 vim.opt.endofline = false
 vim.opt.endoffile = false
 vim.opt.fixendofline = false
+vim.opt.tabstop = 2
 vim.opt.shortmess:append("F")
 -- END OF CUSTOM
 
