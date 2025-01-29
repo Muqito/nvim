@@ -62,5 +62,13 @@ return {
 		vim.keymap.set("n", "<tab>", function()
 			toggle_telescope(harpoon:list())
 		end, { desc = "Open harpoon window" })
+
+		-- custom copy paste file
+		vim.keymap.set("n", "<leader>yf", function()
+			local path = vim.fn.expand("%:p") -- Get the absolute file path
+			vim.fn.setreg("f", path) -- Copy to register 'f'
+			vim.fn.setreg("+", path) -- Copy to the system clipboard
+			print("File path copied to register f and clipboard!")
+		end, { noremap = true, silent = true, desc = 'Yank file path to "f" and clipboard' })
 	end,
 }
