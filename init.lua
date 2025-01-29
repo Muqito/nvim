@@ -95,9 +95,10 @@ vim.g.have_nerd_font = true
 
 -- CUSTOM CONFIG
 vim.opt.relativenumber = true
-vim.opt.endofline = false
-vim.opt.endoffile = false
-vim.opt.fixendofline = false
+vim.opt.fileformats = "unix,dos,mac"
+vim.opt.endofline = true
+vim.opt.endoffile = true
+vim.opt.fixendofline = true
 vim.opt.tabstop = 2
 vim.opt.shortmess:append("F")
 -- END OF CUSTOM
