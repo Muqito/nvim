@@ -40,27 +40,31 @@ return {
 		end, { desc = "File 9 in buffer" })
 
 		-- basic telescope configuration
-		local conf = require("telescope.config").values
-		local function toggle_telescope(harpoon_files)
-			local file_paths = {}
-			for _, item in ipairs(harpoon_files.items) do
-				table.insert(file_paths, item.value)
-			end
+		-- local conf = require("telescope.config").values
+		-- local function toggle_telescope(harpoon_files)
+		-- 	local file_paths = {}
+		-- 	for _, item in ipairs(harpoon_files.items) do
+		-- 		table.insert(file_paths, item.value)
+		-- 	end
+		--
+		-- 	require("telescope.pickers")
+		-- 		.new({}, {
+		-- 			prompt_title = "Harpoon",
+		-- 			finder = require("telescope.finders").new_table({
+		-- 				results = file_paths,
+		-- 			}),
+		-- 			previewer = conf.file_previewer({}),
+		-- 			sorter = conf.generic_sorter({}),
+		-- 		})
+		-- 		:find()
+		--end
 
-			require("telescope.pickers")
-				.new({}, {
-					prompt_title = "Harpoon",
-					finder = require("telescope.finders").new_table({
-						results = file_paths,
-					}),
-					previewer = conf.file_previewer({}),
-					sorter = conf.generic_sorter({}),
-				})
-				:find()
-		end
+		-- vim.keymap.set("n", "<tab>", function()
+		-- 	toggle_telescope(harpoon:list())
+		-- end, { desc = "Open harpoon window" })
 
 		vim.keymap.set("n", "<tab>", function()
-			toggle_telescope(harpoon:list())
+			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end, { desc = "Open harpoon window" })
 
 		-- custom copy paste file
@@ -70,5 +74,7 @@ return {
 			vim.fn.setreg("+", path) -- Copy to the system clipboard
 			print("File path copied to register f and clipboard!")
 		end, { noremap = true, silent = true, desc = 'Yank file path to "f" and clipboard' })
+
+		vim.keymap.set("n", "gf", require("telescope.builtin").git_status, { desc = "Open git find through harpoon" })
 	end,
 }
